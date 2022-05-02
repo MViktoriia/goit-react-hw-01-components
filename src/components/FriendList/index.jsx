@@ -1,0 +1,1 @@
+import FriendList from './FriendList'
