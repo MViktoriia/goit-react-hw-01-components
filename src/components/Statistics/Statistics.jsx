@@ -3,14 +3,14 @@ import style from './Statistics.module.css';
 
 function Statistics({ title, stats }) {
     return (
-        <section className="statistics">
-            {title && <h2 className="title">{title}</h2>}
+        <section className={style.statistics}>
+            {title && <h2 className={style.title}>{title}</h2>}
 
-            <ul className="stat-list">
+            <ul className={style.statlist}>
                 {stats.map(stat => (
-                        <li key = {stat.id} className="item">
-                            <span className="label">{stat.label}</span>
-                            <span className="percentage">{stat.percentage}</span>
+                    <li key={stat.id} className={style.item} style={{ backgroundColor: getRandomHexColor() }}>
+                            <span className={style.label}>{stat.label}</span>
+                            <span className={style.percentage}>{`${stat.percentage} %`}</span>
                         </li>
                     )                    
                 )}
@@ -29,4 +29,9 @@ Statistics.propTypes = {
     })),
 };
 
+function getRandomHexColor() {
+  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}
+
 export default Statistics;
+
