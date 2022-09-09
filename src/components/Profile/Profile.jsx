@@ -1,35 +1,34 @@
 import PropTypes from 'prop-types';
-import style from './Profile.module.css';
+import { ProfileStyled, Avatar, Name, Tag, Location, Stats, StatsItem, Label, Quantity } from './Profile.styled';
 
 function Profile({ username, tag, location, avatar, stats }) {
     return (
-        <div className={style.profile}>
-            <div className={style.description}>
-                <img
+        <ProfileStyled>
+            <div>
+                <Avatar
                     src={avatar}
                     alt="User avatar"
-                    className={style.avatar}
-            />
-            <p className={style.name}>{username}</p>
-                <p className={style.tag}>@{tag}</p>
-                <p className={style.location}>{location}</p>
-        </div>
+                />
+                <Name>{username}</Name>
+                <Tag>@{tag}</Tag>
+                <Location>{location}</Location>
+            </div>
 
-            <ul className={style.stats}>
-            <li className={style.item}>
-                    <span className={style.label}>Followers</span>
-                    <span className={style.quantity}>{stats.followers}</span>
-            </li>
-            <li className={style.item}>
-                <span className={style.label}>Views</span>
-                <span className={style.quantity}>{stats.views}</span>
-            </li>
-            <li className={style.item}>
-                <span className={style.label}>Likes</span>
-                <span className={style.quantity}>{stats.likes}</span>
-            </li>
-        </ul>
-    </div>
+            <Stats>
+                <StatsItem>
+                    <Label>Followers</Label>
+                    <Quantity>{stats.followers}</Quantity>
+                </StatsItem>
+                <StatsItem>
+                    <Label>Views</Label>
+                    <Quantity>{stats.views}</Quantity>
+                </StatsItem>
+                <StatsItem>
+                    <Label>Likes</Label>
+                    <Quantity>{stats.likes}</Quantity>
+                </StatsItem>
+            </Stats>
+        </ProfileStyled>
     );    
 };
 
